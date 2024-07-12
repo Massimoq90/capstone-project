@@ -46,6 +46,7 @@ router.post('/register', (req, res) => {
 
 router.post('/login', async (req, res) => {
     // logica per il login di un utente
+    console.log(req);
     const email = req.body.email;
     const password = req.body.password;
 
@@ -66,14 +67,19 @@ router.post('/login', async (req, res) => {
 
         } else {
 
-            return res.status(404).json({ message: 'Invalid Password' });
+            return res.status(401).json({ message: 'Invalid Password' });
         }
 
     } else {
 
-        return res.status(404).json({ message: 'Invalid Email' });
+        return res.status(401).json({ message: 'Invalid Email' });
     }
 
+});
+
+router.get('/', async (req, res) => {
+    const allUsers = await UsersModel.find();
+    return res.status(200).json(allUsers)
 })
 
 module.exports = router;

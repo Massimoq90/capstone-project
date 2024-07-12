@@ -7,6 +7,7 @@ const Profile = () => {
         <h1 className='text text-center'>Profile</h1>
         <p className='text text-center'>This is the profile page</p>
        </Container>
+    
     )
 }
 

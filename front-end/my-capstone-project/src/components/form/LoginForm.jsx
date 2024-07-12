@@ -11,14 +11,13 @@ import {
     MDBCard,
     MDBCardBody,
     MDBInput,
-    MDBIcon,
 }
     from 'mdb-react-ui-kit';
 
 const LoginForm = () => {
 
     const [user, setUser] = useState({})
-
+   
     const formHandler = (e) => {
         setUser({
             ...user,
@@ -27,7 +26,10 @@ const LoginForm = () => {
     }
     const formHandlerSubmit = (e) => {
         axios.post('http://localhost:3030/users/login', user)
-            .then(response => console.log(response))
+            .then(response =>{
+                console.log(response)
+                localStorage.setItem("auth", response.data);
+            })
             .catch(error => console.log(error))
     }
 
@@ -43,23 +45,17 @@ const LoginForm = () => {
                             <h2 className="fw-bold mb-2 text-center">Sign in</h2>
                             <p className="text-white-50 mb-3">Please enter your login and password!</p>
 
-                            <MDBInput wrapperClass='mb-4 w-100' name='Email' label='Email ' id='formControlLg'
+                            <MDBInput wrapperClass='mb-4 w-100' name='email' label='Email ' id='formControlLg'
                                 type='email' size="lg" onChange={formHandler} />
 
-                            <MDBInput wrapperClass='mb-4 w-100' name='Password' label='Password' id='formControlLg'
+                            <MDBInput wrapperClass='mb-4 w-100' name='password' label='Password' id='formControlLg'
                                 type='password' size="lg" onChange={formHandler} />
 
                             <MDBBtn size='lg' onClick={formHandlerSubmit}>
                                 Login
                             </MDBBtn>
 
-                            <hr className="my-4" />
-
-                            <MDBBtn className="mb-2 w-100" size="lg" style={{ backgroundColor: '#dd4b39' }}>
-                                <MDBIcon fab icon="google" className="mx-2" />
-                                google
-                            </MDBBtn>
-
+                            
                         </MDBCardBody>
                     </MDBCard>
 

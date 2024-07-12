@@ -1,13 +1,22 @@
-import React from 'react'
-import Container from 'react-bootstrap/esm/Container';
 
-const Contacts = () => {
+import { Container } from 'react-bootstrap';
+import Form from 'react-bootstrap/Form';
+
+function TextControlsExample() {
     return (
-        <Container className='my-5'>
-            <h1 className='text text-center'>Contacts</h1>
-            <p className='text text-center'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <Container className='d-flex justify-content-center align-items-center h-100'>
+            <Form>
+                <Form.Group className="mb-3 w-100 " controlId="exampleForm.ControlInput1">
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control type="email" placeholder="name@example.com" />
+                </Form.Group>
+                <Form.Group className="mb-3 w-100" controlId="exampleForm.ControlTextarea1">
+                    <Form.Label>Example textarea</Form.Label>
+                    <Form.Control as="textarea" rows={3} />
+                </Form.Group>
+            </Form>
         </Container>
-    )
+    );
 }
 
-export default Contacts;
+export default TextControlsExample;
